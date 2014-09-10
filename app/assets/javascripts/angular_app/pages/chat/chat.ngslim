@@ -1,0 +1,25 @@
+h1 Chat
+p This nested view is visible to logged in users
+
+.well
+    .row
+        .col-md-9
+            div#msg_container
+                ul(ng-repeat="msg in msgs track by $index")
+                    li(ng-bind-html="msg")
+            .chat_box
+                .input-group
+                    input#chat_input.form-control(type="text" ng-model="user_message" ng-keyup="triggerTalk($event)")
+                    span.input-group-btn
+                        button.btn.btn-primary(ng-click="talk(user_message)" ng-disabled="!user_message") Talk
+        .col-md-3
+            div.user_list(ng-repeat="user in users track by user.socket_id")
+                div.btn-group(dropdown is-open="user._isOpen")
+                    button(type="button" class="btn btn-info dropdown-toggle")
+                        span(ng-bind="user.user_name + ' '")
+                        span.caret
+                    ul.dropdown-menu(role="menu")
+                        li
+                            a(href="" ng-click="sendPrivateMessage(user)") Private message
+                        li
+                            a(href="" ng-click="seeProfile(user)") See profile

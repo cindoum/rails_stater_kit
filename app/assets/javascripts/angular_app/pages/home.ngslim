@@ -1,0 +1,12 @@
+h1 Hello
+p This view is visible to every in users.
+.well
+    h2 Todo
+    ul
+        li(style="background-color: yellow") Load current_user on refresh - done (need improvement of success/fail in app.js)
+        li(style="background-color: yellow") manage cancan failure - done
+        li add oauth system
+        li(style="background-color: yellow") add errbit logging system - done
+        li better handling of error status code in angular (show error for 401, 503 and 403)
+        li(style="background-color: yellow") controller resolver instead of ajax call in controller init - done
+        li tweak restangular to receive type resp { succes: true, info: '', data: users } => currently throwing error as resp should be an array when alling .getList()

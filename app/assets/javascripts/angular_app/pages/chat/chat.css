@@ -1,0 +1,48 @@
+#msg_container {
+    border: 1px solid black;
+    height: 600px;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#msg_container p.system {
+    color: red;
+}
+
+#msg_container .user_name {
+    font-weight: bold;
+    font-style: italic;
+}
+
+#msg_container ul {
+    padding-left: 0;
+    list-style-type: none;
+    margin-bottom: 0;
+}
+
+#msg_container ul > li > p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#msg_container ul > li > p.private {
+    background-color: yellow;
+}
+
+.chat_box {
+    margin-top: 15px;
+}
+
+.user_list .btn-group{
+    width: 100%;
+}
+
+.user_list button{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.dropdown-menu {
+    top: 75%;
+}

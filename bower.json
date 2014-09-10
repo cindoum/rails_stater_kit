@@ -1,0 +1,24 @@
+{
+  "name": "Playground_onrails",
+  "version": "0.0.1",
+  "authors": [
+    "Dominic Lapointe <dom.dlapointe@gmail.com>"
+  ],
+  "description": "Starter kit",
+  "keywords": [
+    "Rails4",
+    "angular",
+    "devise",
+    "pundit"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.2.16",
+    "bootstrap": "~3.1.1",
+    "angular-route": "~1.2.16",
+    "font-awesome": "~4.0.3",
+    "lodash": "~2.4.1",
+    "angular-sanitize": "~1.2.22",
+    "angular-bootstrap": "~0.11.0"
+  }
+}

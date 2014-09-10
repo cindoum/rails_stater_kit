@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html >
+    <head>
+      <title>PlaygroundOnrails</title>
+      <!--<%= airbrake_javascript_notifier %>-->
+      <%= stylesheet_link_tag    "application", media: "all" %>
+      <%= javascript_include_tag "application" %>
+      <%= csrf_meta_tags %>
+    </head>
+    <body ng-cloak>
+        <div role="navigation" class="navbar navbar-default navbar-fixed-top snavbar-inverse" ng-controller="NavCtrl">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand brand"><img src="http://placehold.it/350x150"></a>
+            </div>
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li active-nav><a href="#/">Home</a></li>
+                        <li data-access-level="0" active-nav><a href="#/login">Connexion <i class="fa fa-sign-in"></i></a></li>
+                        <li data-access-level="2" active-nav="nestedTop"><a href="#/private">Privé</a></li>
+                        <li data-access-level="1" active-nav=><a href="#/admin">Admin</a></li>
+                        <li data-access-level="2" active-nav=><a href="#/chat">Chat</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        <li id="join" data-access-level="0" active-nav><a href="#/register">Inscription</a></li>
+                        <li data-access-level="2"><a href="" data-ng-click="logout()">Quitter <i class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div ng-view></div>
+        </div>
+    </body>
+</html>
