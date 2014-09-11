@@ -1,4 +1,12 @@
 defaults: &defaults
+    twitter:
+        clientId: ENV["TWITTER_CLIENT_ID"]
+        clientSecret: ENV["TWITTER_CLIENT_SECRET"]
+    linkedin:
+        app_id: ENV["LINKEDIN_APP_ID"]
+        app_secret: ENV["LINKEDIN_APP_SECRET"]
+    errbit: 
+        api_key: ENV["ERRBIT_API_KEY"]
 development: 
     <<: *defaults
 test: 

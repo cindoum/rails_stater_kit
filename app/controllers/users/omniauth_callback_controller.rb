@@ -1,5 +1,6 @@
 class Users::OmniauthCallbackController < Devise::OmniauthCallbacksController
   def linkedin
+      pp '---------------------------------------------------**********************************************'
     user = User.from_omniauth(request.env["omniauth.auth"])
 
     if user.persisted?

@@ -8,9 +8,6 @@ describe PrivateController, :type => :controller do
             it "refuse not logged in user" do
                 get :index, :format => :json
     
-                pp response.body
-                pp response.status
-    
                 expect(response).not_to be_success
                 expect(response.status).to eq(401)
             end
@@ -55,7 +52,7 @@ describe PrivateController, :type => :controller do
                 expect(response).not_to be_success
                 
                 expect(body.include? "success").to be true
-                 expect(body["success"]).to be false
+                expect(body["success"]).to be false
                 
                 expect(body.include? "info").to be true
                 expect(body.include? "data").to be true
