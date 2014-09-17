@@ -3,7 +3,7 @@ require 'role_model'
 class User < ActiveRecord::Base
     include RoleModel
     
-    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:linkedin, :twitter]
+    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:linkedin, :twitter, :google]
 
     roles_attribute :roles_mask
     
@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
           user.user_name = auth.info.nickname
           user.first_name = auth.info.first_name
           user.last_name = auth.info.last_name
+          user.roles = [:user]
        end
     end
 end

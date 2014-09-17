@@ -5,8 +5,12 @@ defaults: &defaults
     linkedin:
         app_id: <%= ENV["LINKEDIN_APP_ID"] %>
         app_secret: <%= ENV["LINKEDIN_APP_SECRET"] %>
+    google:
+        client_id: <%= ENV["GOOGLE_CLIENT_ID"] %>
+        client_secret: <%= ENV["GOOGLE_CLIENT_SECRET"] %>
     errbit: 
         api_key: <%= ENV["ERRBIT_API_KEY"] %>
+    full_host: 'https://playgroundonrails-c9-doum.c9.io'
 development: 
     <<: *defaults
 test: 
