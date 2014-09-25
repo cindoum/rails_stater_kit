@@ -2,7 +2,7 @@ class RegistrationController < Devise::RegistrationsController
     respond_to :json
     
     def create
-        user = User.new(user_params)
+        user = user.create_local_user user_params
         user.roles = if params[:user][:admin] == true then [:admin] else [:user] end
         
         if user.save
@@ -15,7 +15,6 @@ class RegistrationController < Devise::RegistrationsController
     end
     
     private
-    
         def user_params
             params.require(:user).permit(:email, :password, :user_name)
         end

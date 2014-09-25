@@ -43,7 +43,7 @@ button.btn.btn-link.pull-right(ng-click="retrievePassword()") Mot de passe oubli
     a.btn.btn-default(href="" data-ng-click="loginOauth('twitter')")
         i.fa.fa-twitter
         |  Twitter
-    a.btn.btn-default(href="" data-ng-click="loginOauth('google')")
+    a.btn.btn-default(href="" data-ng-click="loginOauth('google_oauth2')")
         i.fa.fa-google-plus-square
         |  Google
     a.btn.btn-default(href="" data-ng-click="loginOauth('linkedin')")

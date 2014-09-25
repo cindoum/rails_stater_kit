@@ -255,7 +255,7 @@ Devise.setup do |config|
   config.omniauth_path_prefix = '/users/auth'
   config.omniauth :twitter, AppConfig.twitter['clientId'], AppConfig.twitter['clientSecret']
   config.omniauth :linkedin, AppConfig.linkedin['app_id'], AppConfig.linkedin['app_secret']
-  config.omniauth :google, AppConfig.google['client_id'], AppConfig.google['client_secret']
+  config.omniauth :google_oauth2, AppConfig.google['client_id'], AppConfig.google['client_secret']
   
   OmniAuth.config.full_host = AppConfig.full_host
   
