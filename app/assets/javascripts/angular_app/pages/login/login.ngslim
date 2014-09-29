@@ -37,12 +37,6 @@ hr
 p ... Ou connectez vous a l'aide d'un des moyens suivants 
 button.btn.btn-link.pull-right(ng-click="retrievePassword()") Mot de passe oublié
 .btn-group
-    a.btn.btn-default(href="" data-ng-click="loginOauth('facebook')")
-        i.fa.fa-facebook-square
-        |  Facebook
-    a.btn.btn-default(href="" data-ng-click="loginOauth('twitter')")
-        i.fa.fa-twitter
-        |  Twitter
     a.btn.btn-default(href="" data-ng-click="loginOauth('google_oauth2')")
         i.fa.fa-google-plus-square
         |  Google

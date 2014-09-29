@@ -36,7 +36,7 @@ angular.module("starterApp").controller('ChatCtrl', ['$scope', function($scope) 
     };
     
     var _initWebSocket = function () {
-        return new WebSocketRails('playground_onrails-c9-doum.c9.io/websocket');
+        return new WebSocketRails('playgroundonrails-c9-doum.c9.io/websocket');
     };
     
     var _bindWebSocket = function (dispatcher) {
