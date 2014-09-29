@@ -21,14 +21,10 @@ angular.module("starterApp").config(['$routeProvider', '$httpProvider', function
 
     var error = function (response) {
       if (response.status === 401) {
-        //redirect them back to login page
         $location.path('/login');
-
-        return $q.reject(response);
       } 
-      else {
-        return $q.reject(response);
-      }
+      
+      return $q.reject(response);
     };
 
     return function (promise) {

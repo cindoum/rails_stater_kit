@@ -1,4 +1,4 @@
-angular.module("starterApp").controller('ChatCtrl', ['$scope', function($scope) {
+angular.module("starterApp").controller('ChatCtrl', ['$scope', 'ResponseValidator', function($scope, ResponseValidator) {
     var _init = function () {
         $scope.users = [];
         $scope.msgs = [];
@@ -55,8 +55,9 @@ angular.module("starterApp").controller('ChatCtrl', ['$scope', function($scope) 
         }
     }
     
-    var _manageUsers = function (data) {
-        if (data.users != null) {
+    var _manageUsers = function (resp) {
+        var data = ResponseValidator.validate(resp);
+        if (data != null) {
             var changedUser = _findChangeUser($scope.users, data.users);
             _addUserChangeText(data.users.length > $scope.users.length, changedUser)
             
@@ -86,22 +87,26 @@ angular.module("starterApp").controller('ChatCtrl', ['$scope', function($scope) 
         }
     };
     
-    var _printMessage = function (data) {
+    var _printMessage = function (resp) {
         var from;
         var msg;
-        if (data.user == null && data.from != null) {
-            from = data.from.user_name;
-            msg = data.msg
-            $scope.msgs.push('<p class="private">- <span class="user_name">' + from + '</span> : ' + msg + '</p>');
-        }
-        else {
-            from = data.user.user_name;
-            msg = data.msg;
-            $scope.msgs.push('<p>- <span class="user_name">' + from + '</span> : ' + msg + '</p>');
-        }
+        var data = ResponseValidator.validate(resp);
         
-        $scope.$apply();
-        _scrollMsgWindow();  
+        if (data != null) {
+            if (data.user == null && data.from != null) {
+                from = data.from.user_name;
+                msg = data.msg
+                $scope.msgs.push('<p class="private">- <span class="user_name">' + from + '</span> : ' + msg + '</p>');
+            }
+            else {
+                from = data.user.user_name;
+                msg = data.msg;
+                $scope.msgs.push('<p>- <span class="user_name">' + from + '</span> : ' + msg + '</p>');
+            }
+            
+            $scope.$apply();
+            _scrollMsgWindow();     
+        }
     };
     
     var _addUserChangeText = function (added, user, needApply) {
@@ -118,6 +123,7 @@ angular.module("starterApp").controller('ChatCtrl', ['$scope', function($scope) 
         var divx = document.getElementById("msg_container");
         divx.scrollTop = divx.scrollHeight;
     };
+    
     
     _init();
 }]);

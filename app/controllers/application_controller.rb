@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   after_filter :set_csrf_cookie_for_ng
   rescue_from CanCan::AccessDenied, :with => :rescue_cancan
-
+  
   def permission_denied
     render :file => "public/401.html", :status => :unauthorized
   end
