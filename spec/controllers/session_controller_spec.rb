@@ -170,7 +170,6 @@ describe SessionController, :type => :controller do
                 get :show_current_user
                 
                 body = JSON.parse(response.body)
-                
                 expect(response).not_to be_success
                 
                 expect(body.include? "success").to be true
