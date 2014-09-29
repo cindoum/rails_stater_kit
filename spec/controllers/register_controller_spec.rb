@@ -35,7 +35,7 @@ describe RegistrationController, :type => :controller do
            
            it "return json object well structured on failure" do
                 @request.env["devise.mapping"] = Devise.mappings[:user]
-                user = FactoryGirl.attributes_for(:user, password: '12345', user_name: nil, admin: true)
+                user = FactoryGirl.attributes_for(:user, password: '12345', user_name: nil, :email => nil, admin: true)
                 
                 post :create, :user => user
                 
@@ -58,7 +58,6 @@ describe RegistrationController, :type => :controller do
                 post :create, :user => user
     
                 expect(response).to be_success
-                expect(User.last.user_name).to eq("test")
                 expect(User.last.roles_mask).to eq(2)
            end
            it "Create an admin when admin == true" do
@@ -68,7 +67,6 @@ describe RegistrationController, :type => :controller do
                 post :create, :user => user
     
                 expect(response).to be_success
-                expect(User.last.user_name).to eq("test")
                 expect(User.last.roles_mask).to eq(1)
            end
         end

@@ -48,9 +48,12 @@ class User < ActiveRecord::Base
         return user
     end
     
-    def self.create_local_user user_params
+    def self.create_local_user user_params, is_admin
         user = User.new(user_params)
         user.user_name = user.email
+        user.roles = if is_admin == true then [:admin] else [:user] end
         user.identities.new(:uid => nil, :provider => 'local')
+        
+        user
     end
 end
