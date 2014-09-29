@@ -8,7 +8,7 @@ angular.module("starterApp").factory('Session', function($location, $http, $q) {
         login: function(user) {
             return $http.post('/login', {user: {email: user.email, password: user.password, rememberme: user.rememberme} })
                 .then(function(resp) {
-                    service.currentUser = resp.data.data;
+                    service.currentUser = resp;
                     if (service.isAuthenticated()) {
                         $location.path('/');
                     }
@@ -19,7 +19,7 @@ angular.module("starterApp").factory('Session', function($location, $http, $q) {
         register: function (user) {
             return $http.post('/register', { user: { email: user.email, password: user.password, admin: user.admin }})  
                 .then(function (resp) {
-                    service.currentUser = resp.data.data;
+                    service.currentUser = resp;
                     if (service.isAuthenticated()) {
                         $location.path('/');
                     }
@@ -38,7 +38,7 @@ angular.module("starterApp").factory('Session', function($location, $http, $q) {
                 return $q.when(service.currentUser);
             } else {
                 return $http.get('/current_user').then(function(resp) {
-                    service.currentUser = resp.data.data;
+                    service.currentUser = resp;
                     return service.currentUser;
                 });
             }

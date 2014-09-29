@@ -3,7 +3,7 @@ class AdminController < ApplicationController
     authorize_resource :class => false
     respond_to :json
     
-    def index
-        render :status => 200, :json => { :success => true, :info => "", :data => User.all }
-end
+    def index 
+        render :status => 200, :json => FormatResponse.doFormat(false, nil, User.all)
+    end
 end

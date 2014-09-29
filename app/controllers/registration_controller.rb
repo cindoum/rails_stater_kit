@@ -6,10 +6,10 @@ class RegistrationController < Devise::RegistrationsController
         
         if user.save
             sign_in(user)
-            render :status => 200, :json => { :success => true, :info => "Account created", :data => user }
+            render :status => 200, :json => FormatResponse.doFormat(true, "Account created", user)
         else
             warden.custom_failure!
-            render :status => 422, :json => { :success => false, :info => "Account not created", :data => user.errors}
+            render :status => 422, :json => FormatResponse.doFormat(false, "Account not created",  user.errors)
        end
     end
     

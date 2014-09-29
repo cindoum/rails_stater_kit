@@ -14,17 +14,29 @@ angular.module("starterApp").config(['$routeProvider', '$httpProvider', function
         .when('/chat', { templateUrl: 'angular_app/pages/chat/chat.html', controller: 'ChatCtrl'})
         .otherwise({ redirectTo: '/' });
         
-    var logsOutUserOn401 = ['$q', '$location', function ($q, $location) {
+    var logsOutUserOn401 = ['$q', '$location', 'ResponseValidator', function ($q, $location, ResponseValidator) {
     var success = function (response) {
-      return response;
+        var data = null;
+        
+        if (response.data.success != null) {
+           data = ResponseValidator.validate(response.data);
+        } 
+        
+        return data || response;
     };
 
     var error = function (response) {
-      if (response.status === 401) {
-        $location.path('/login');
-      } 
-      
-      return $q.reject(response);
+        var data = null;
+        
+        if (response.data.success != null) {
+           data = ResponseValidator.validate(response.data);
+        }
+        
+        if (response.status === 401) {
+            $location.path('/login');
+        } 
+        
+        return $q.reject(data || response);
     };
 
     return function (promise) {
