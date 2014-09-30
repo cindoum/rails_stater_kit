@@ -19,6 +19,7 @@
     "font-awesome": "~4.0.3",
     "lodash": "~2.4.1",
     "angular-sanitize": "~1.2.22",
-    "angular-bootstrap": "~0.11.0"
+    "angular-bootstrap": "~0.11.0",
+    "angular-markdown-directive": "~0.3.0"
   }
 }

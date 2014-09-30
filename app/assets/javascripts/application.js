@@ -15,6 +15,8 @@
 //= require angular-route/angular-route
 //= require angular-sanitize/angular-sanitize
 //= require angular-bootstrap/ui-bootstrap-tpls
+//= require angular-markdown-directive/markdown
+//= require showdown/src/showdown
 //= require lodash/dist/lodash
 //= require app
 //= require_tree ./angular_app
