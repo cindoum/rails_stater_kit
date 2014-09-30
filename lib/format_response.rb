@@ -1,5 +1,5 @@
 class FormatResponse
-    def self.doFormat (success, info, data)
+    def self.doFormat (success, info, data, toJson = true)
         raise StandardError, "Response format not acceptable, 'success' param is mandatory" unless !success.nil?
         
         if info.nil?
@@ -10,6 +10,12 @@ class FormatResponse
            end
         end
         
-        { :success => success, :info => info, :data => data }.to_json
+        resp = { :success => success, :info => info, :data => data } 
+        
+        if toJson == true
+            resp.to_json
+        else
+            resp
+        end
     end
 end
