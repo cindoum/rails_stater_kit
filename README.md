@@ -1,5 +1,3 @@
-
-
 [![Build Status](https://travis-ci.org/cindoum/rails_stater_kit.svg?branch=master)](https://travis-ci.org/cindoum/rails_stater_kit) 
 #Ruby on rails starter kit
 
