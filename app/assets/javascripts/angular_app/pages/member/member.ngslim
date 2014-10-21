@@ -2,6 +2,10 @@ section.panel.panel-default
     .panel-heading
         i.fa.fa-user &nbsp
         strong(ng-bind="member.user_name || 'New'")
+        span(ng-repeat="identity in member.identities" style="margin-left: 5px;")
+            i.fa.fa-google-plus(title="Google" ng-if="identity.provider == 'google_oauth2'")
+            i.fa.fa-linkedin(title="LinkedIn" ng-if="identity.provider == 'linkedin'")
+            i.fa.fa-key(title="Local" ng-if="identity.provider == 'local'")
         small.pull-right
             span ID : 
             span(ng-bind="member.id || 'new'")
@@ -35,6 +39,7 @@ section.panel.panel-default
                 a.pull-left(href="#/member")
                     i.fa.fa-caret-left &nbsp Back to the list
                 input.btn.btn-default.pull-right(type="submit" value="Save")
+            
 
         
         
