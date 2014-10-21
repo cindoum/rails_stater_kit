@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   
   def runtime_error(ex)
      Airbrake.notify(ex)
+     puts ex
      render :status => 500, :json => FormatResponse.doFormat(false, "Something went wrong", ex)
   end
   

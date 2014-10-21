@@ -4,44 +4,51 @@ angular.module("starterApp", ['ngRoute', 'templates', 'ngSanitize', 'ui.bootstra
     $locationProvider.html5Mode(true);
 }]);*/
 
-angular.module("starterApp").config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
+angular.module("starterApp").value('indexLimit', 10);
+
+angular.module("starterApp").config(['$routeProvider', '$httpProvider', '$injector', function($routeProvider, $httpProvider, $injector) {
     $routeProvider
         .when('/', { templateUrl: 'angular_app/pages/home.html'})
         .when('/login', { templateUrl: 'angular_app/pages/login/login.html', controller: 'LoginCtrl'})
         .when('/register', { templateUrl: 'angular_app/pages/register/register.html', controller: 'RegisterCtrl'})
-        .when('/private', { templateUrl: 'angular_app/pages/private/private.html', controller: 'PrivateCtrl', resolve: privateResolver.resolve })
-        .when('/admin', { templateUrl: 'angular_app/pages/admin/admin.html', controller: 'AdminCtrl', resolve: adminResolver.resolve})
+        
         .when('/chat', { templateUrl: 'angular_app/pages/chat/chat.html', controller: 'ChatCtrl'})
-        .otherwise({ redirectTo: '/' });
+        
+         /* USERS */
+        .when('/member', { templateUrl: 'angular_app/pages/index/index.html', controller: 'IndexCtrl', resolve: $injector.get('memberResolver').resolveIndex })
+        .when('/member/new', { templateUrl: 'angular_app/pages/member/member.html', controller: 'MemberCtrl', resolve: $injector.get('memberResolver').resolve })
+        .when('/member/:id', { templateUrl: 'angular_app/pages/member/member.html', controller: 'MemberCtrl', resolve: $injector.get('memberResolver').resolve })
+
+        .otherwise({ redirectTo: '/404' });
         
     var logsOutUserOn401 = ['$q', '$location', 'ResponseValidator', function ($q, $location, ResponseValidator) {
-    var success = function (response) {
-        var data = null;
-        
-        if (response.data.success != null) {
-           data = ResponseValidator.validate(response.data);
-        } 
-        
-        return data || response;
-    };
-
-    var error = function (response) {
-        var data = null;
-        
-        if (response.data.success != null) {
-           data = ResponseValidator.validate(response.data);
-        }
-        
-        if (response.status === 401) {
-            $location.path('/login');
-        } 
-        
-        return $q.reject(data || response);
-    };
-
-    return function (promise) {
-      return promise.then(success, error);
-    };
+        var success = function (response) {
+            var data = null;
+            
+            if (response.data.success != null) {
+               data = ResponseValidator.validate(response.data);
+            } 
+            
+            return data || response;
+        };
+    
+        var error = function (response) {
+            var data = null;
+            
+            if (response.data.success != null) {
+               data = ResponseValidator.validate(response.data);
+            }
+            
+            if (response.status === 401) {
+                $location.path('/login');
+            } 
+            
+            return $q.reject(data || response);
+        };
+    
+        return function (promise) {
+            return promise.then(success, error);
+        };
   }];
 
   $httpProvider.responseInterceptors.push(logsOutUserOn401);
@@ -64,7 +71,7 @@ angular.element(document).ready(function() {
         }
         
         var anonRoutes = ['/login', '/register', '/'];
-        var userRoutes = ['/private', '/chat'];
+        var userRoutes = ['/member', '/chat'];
         var adminRoutes = ['/admin'];
         
         root.$on('$routeChangeStart', function (event, next, current) {

@@ -6,7 +6,7 @@ angular.module("starterApp").factory('ResponseValidator', function() {
                     throw 'Response is not formatted. Response must contain a success param'
                 }
                 else if (resp.success == true) {
-                    return resp.data;
+                    return { data: resp.data, meta: resp.meta }
                 }
                 else if (resp.success == false) {
                     //log error plus send to toastr (with resp.info)

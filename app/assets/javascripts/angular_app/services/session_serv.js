@@ -43,10 +43,13 @@ angular.module("starterApp").factory('Session', function($location, $http, $q) {
                 });
             }
         },
-        currentUser: null,
+        isAdmin: function () {
+            return service.currentUser != null && service.currentUser.roles_mask == 1;
+        },
         isAuthenticated: function(){
             return !!service.currentUser;
         },
+        currentUser: null,
     };
     return service;
 });

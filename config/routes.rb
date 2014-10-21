@@ -10,9 +10,10 @@ PlaygroundOnrails::Application.routes.draw do
     
     post '/error', to: 'error#create'
     
-    get '/private', to: 'private#index'
-    
-    get '/admin', to: 'admin#index'
+    get '/members', to: 'members#index'
+    get '/members/:id', to: 'members#read'
+    put '/members', to: 'members#update'
+    post '/members', to: 'members#create'
     
     root to: "homes#index"
 end

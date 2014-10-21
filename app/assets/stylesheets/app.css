@@ -3,7 +3,6 @@
 }
 
 body {
-    sfont-size: 1em;
     padding: 75px;
 }
 
@@ -80,4 +79,52 @@ body {
 }
 .fade-show-setup.fade-show-start {
     opacity:1;
+}
+
+/* TABLE ------------------------------------------------ */
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+.table .th[class*=sort] {
+  cursor: pointer;
+}
+.table .th[class*=sort]:after {
+  content: "\f0dc";
+  display: inline-block;
+  color: #555;
+  font-family: FontAwesome;
+  font-size: 13px;
+  font-weight: normal;
+  float: right;
+  margin-right: 1px;
+  position: relative;
+}
+.table .th[class*=sort]:hover {
+  color: #31c0be;
+}
+.table .th[class*=sorting_] {
+  color: #31c0be;
+}
+
+.table .th.sorting_desc:after {
+  content: "\f0dd";
+  top: -6px;
+  color: #31c0be;
+}
+.table .th.sorting_asc:after {
+  content: "\f0de";
+  top: 4px;
+  color: #31c0be;
+}
+.table .th.sorting_disabled {
+  cursor: inherit;
+}
+.table .th.sorting_disabled:after {
+  display: none;
+}
+
+.table td {
+    cursor: pointer;
 }

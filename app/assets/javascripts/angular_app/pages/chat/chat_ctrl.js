@@ -57,7 +57,9 @@ angular.module("starterApp").controller('ChatCtrl', ['$scope', 'ResponseValidato
     
     var _manageUsers = function (resp) {
         var data = ResponseValidator.validate(resp);
-        if (data != null) {
+        if (data != null && data.data != null) {
+            data = data.data;
+            
             var changedUser = _findChangeUser($scope.users, data.users);
             _addUserChangeText(data.users.length > $scope.users.length, changedUser)
             
@@ -92,7 +94,9 @@ angular.module("starterApp").controller('ChatCtrl', ['$scope', 'ResponseValidato
         var msg;
         var data = ResponseValidator.validate(resp);
         
-        if (data != null) {
+        if (data != null && data.data) {
+            data = data.data;
+            
             if (data.user == null && data.from != null) {
                 from = data.from.user_name;
                 msg = data.msg

@@ -1,6 +1,0 @@
-h1 Private view (admin)
-p This nested view is visible to admin users
-
-.well
-    div(ng-repeat="user in users")
-        span(ng-bind="user.email")

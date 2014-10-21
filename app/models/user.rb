@@ -11,14 +11,14 @@ class User < ActiveRecord::Base
     
     roles :admin, :user
     
-    validates :password, presence: true
+    validates :password, presence: true, on: :create
     validates :user_name, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true
     
     def active_for_authentication?
         super && self.is_enable
     end
-  
+
     def self.from_omniauth auth
         user = User.where(:email => auth.info.email).first
         if user.nil?
@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
                 :email => auth.info.email,
                 :password => Devise.friendly_token[6, 16],
                 :user_name => auth.info.nickname || auth.info.name,
-                :first_name => auth.info.first_name,
+                :first_name => auth.info.fUsirst_name,
                 :last_name => auth.info.last_name,
                 :roles => [:user])
                 

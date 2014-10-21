@@ -1,6 +1,6 @@
 h1 Home
 
-.well
+.well(style="max-height:600px; overflow-y: auto")
     btf-markdown(ng-include="'README.md'")
         
     

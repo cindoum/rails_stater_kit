@@ -1,0 +1,45 @@
+section.panel.panel-default
+    .panel-heading
+        i.fa.fa-user &nbsp
+        strong(ng-bind="member.user_name || 'New'")
+        small.pull-right
+            span ID : 
+            span(ng-bind="member.id || 'new'")
+    .panel-body
+        form(role="form" ng-submit="save()")
+            fieldset(ng-disabled="isCurrentUserAdmin==false")
+                .row
+                    .col-md-6
+                        .form-group
+                            label(for="username") User name
+                            input#username.form-control(type="text" placeholder="User name" ng-model="member.user_name")
+                        .form-group
+                            label(for="email") Email
+                            input#email.form-control(type="email" placeholder="Email" ng-model="member.email")
+                        .form-group
+                            label(for="pwd") Password
+                            input#pwd.form-control(type="password" placeholder="Password" ng-model="member.password")
+                        .checkbox
+                                label
+                                    input(type="checkbox" ng-model="member._isAdmin") Admin
+                    .col-md-6
+                        .form-group
+                            label(for="firstname") First name
+                            input#firstname.form-control(type="text" placeholder="First name" ng-model="member.first_name")
+                        .form-group
+                            label(for="lastname") Last name
+                            input#lastname.form-control(type="text" placeholder="Last name" ng-model="member.last_name")
+                        .checkbox
+                                label
+                                    input(type="checkbox" ng-model="member.is_enable") Is Enabled
+                a.pull-left(href="#/member")
+                    i.fa.fa-caret-left &nbsp Back to the list
+                input.btn.btn-default.pull-right(type="submit" value="Save")
+
+        
+        
+        
+        
+        
+        
+       

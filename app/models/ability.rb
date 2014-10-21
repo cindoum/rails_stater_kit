@@ -7,7 +7,7 @@ class Ability
         if user.roles_mask == 1
             can :manage, :all
         elsif user.roles_mask == 2
-            can :manage, :private
+            can :read, :member
         end
         
     # Define abilities for the passed in user here. For example:

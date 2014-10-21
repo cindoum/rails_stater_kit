@@ -4,6 +4,6 @@ class AdminController < ApplicationController
     respond_to :json
     
     def index 
-        render :status => 200, :json => FormatResponse.doFormat(true, nil, User.all)
+        render FormatResponse.success(true, nil, User.all)
     end
 end
