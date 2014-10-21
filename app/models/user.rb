@@ -19,11 +19,6 @@ class User < ActiveRecord::Base
         super && self.is_enable
     end
 
-    #def as_json(options)
-        # this example DOES NOT ignore the user's options
-        #super({:include => 'identities'}.merge(options))
-    #end
-
     def self.from_omniauth auth
         user = User.where(:email => auth.info.email).first
         if user.nil?

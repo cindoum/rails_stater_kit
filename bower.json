@@ -5,12 +5,6 @@
     "Dominic Lapointe <dom.dlapointe@gmail.com>"
   ],
   "description": "Starter kit",
-  "keywords": [
-    "Rails4",
-    "angular",
-    "devise",
-    "pundit"
-  ],
   "license": "MIT",
   "dependencies": {
     "angular": "~1.2.16",
