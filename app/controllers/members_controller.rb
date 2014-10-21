@@ -27,6 +27,7 @@ class MembersController < ApplicationController
         if params[:id].casecmp("new") == 0
             render FormatResponse.success(nil, nil, { is_new: true})
         else
+            puts User.find(params[:id])
             render FormatResponse.success(nil, User.find(params[:id]), { is_new: false})
         end
     end
