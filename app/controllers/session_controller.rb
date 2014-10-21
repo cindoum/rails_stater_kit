@@ -4,22 +4,22 @@ class SessionController < Devise::SessionsController
     
     def create
         resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
-        render :status => 200, :json => { :success => true, :info => "Logged in", :data => current_user }
+        render FormatResponse.success(true, "Logged in", current_user)
     end
     
     def destroy
         warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
         sign_out
-        render :status => 200, :json => { :success => true, :info => "Logged out", :data => nil }
+        render FormatResponse.success(true, "Logged out", nil)
     end
     
     def failure errs
         warden.custom_failure!
-        render :status => 401, :json => { :success => false, :info => "Login failed", :data => errs}
+        render FormatResponse.error(401, "Login failed", errs, nil)
     end
     
     def show_current_user
         warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
-        render :status => 200, :json => { :success => true, :info => "Current User", :data => current_user }
+        render FormatResponse.success("Current User", current_user, nil)
     end
 end

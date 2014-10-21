@@ -1,4 +1,4 @@
-angular.module("starterApp").controller('MemberCtrl', ['$scope', 'viewModel', '$route', '$http', 'Session', '$location', function($scope, viewModel, $route, $http, Session, $location) {
+angular.module("starterApp").controller('MemberCtrl', ['$scope', 'viewModel', '$route', 'MemberResource', 'Session', '$location', function($scope, viewModel, $route, MemberResource, Session, $location) {
     var _init = function () {
          $scope.member = viewModel.data || {};
          $scope.meta = viewModel.meta;
@@ -23,14 +23,21 @@ angular.module("starterApp").controller('MemberCtrl', ['$scope', 'viewModel', '$
         $scope.member.roles_mask = _convertIsAdminToRoleMask($scope.member._isAdmin);
         
         if ($scope.meta.is_new == false) {
-            $http.put('/members', { user: $scope.member}).then(function (resp) {
-                $route.reload();
+            MemberResource.update({ user: $scope.member}).$promise.then(function () {
+                 $route.reload();
             });
+            /*$http.put('/members', { user: $scope.member}).then(function (resp) {
+                $route.reload();
+            });*/
         }
         else {
-            $http.post('/members', { user: $scope.member}).then(function (resp) {
+            MemberResource.create({ user: $scope.member}).$promise.then(function () {
                 $location.path('/member/'  + resp.meta.id);
-            });   
+            });
+            
+            /*$http.post('/members', { user: $scope.member}).then(function (resp) {
+                $location.path('/member/'  + resp.meta.id);
+            });*/
         }
     };
     

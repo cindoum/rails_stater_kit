@@ -1,4 +1,4 @@
-angular.module("starterApp", ['ngRoute', 'templates', 'ngSanitize', 'ui.bootstrap', 'btford.markdown']);
+angular.module("starterApp", ['ngRoute', 'templates', 'ngSanitize', 'ui.bootstrap', 'btford.markdown', 'ngResource']);
 
 /*starterApp.config(['$locationProvider', function ($locationProvider) {
     $locationProvider.html5Mode(true);
