@@ -58,9 +58,9 @@ angular.module('starterApp').controller('IndexCtrl', ['$scope', 'viewModel', 'co
     };
     
     var _updateData = function (predicate, reverse, page) {
-        $scope.config.resource({ predicate: predicate, reverse: reverse, page: (page - 1) * $scope.config.pageLimit, searchValue: $scope.searchValue, limit: $scope.config.pageLimit }).$promise.then(function (resp) {
-            $scope.data = resp.data;
-            $scope.count = resp.meta.count;
+        $http.get('/' + $scope.config.url, { params: { predicate: predicate, reverse: reverse, page: (page - 1) * $scope.config.pageLimit, searchValue: $scope.searchValue, limit: $scope.config.pageLimit }}).then(function (resp) {
+           $scope.data = resp.data;
+           $scope.count = resp.meta.count;
         });
     };
     

@@ -16,7 +16,6 @@
 //= require angular-sanitize/angular-sanitize
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require angular-markdown-directive/markdown
-//= require angular-resource/angular-resource
 //= require showdown/src/showdown
 //= require lodash/dist/lodash
 //= require app
