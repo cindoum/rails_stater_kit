@@ -6,7 +6,7 @@ angular.module("starterApp").factory('ResponseValidator', ['$injector', function
                     throw 'Response is not formatted. Response must contain a success param'
                 }
                 else if (resp.success == true) {
-                    return { data: { data: resp.data, meta: resp.meta, info: resp.info }}
+                    return { data: resp.data, meta: resp.meta }
                 }
                 else if (resp.success == false) {
                     var options = { 

@@ -1,18 +1,19 @@
 angular.module('starterApp').constant('memberResolver', {
    resolve: {
-        viewModel: ['MemberResource', '$route', function (MemberResource, $route) {
+        viewModel: ['$http', '$route', function ($http, $route) {
             var id = $route.current.params.id || 'new';
-            return MemberResource.read({id: id}).$promise.then();
+            
+            return $http.get('/members/' + id).then();
         }]
     },
     resolveIndex: {
-         viewModel: ['MemberResource', 'indexLimit', function (MemberResource, indexLimit) {
-            return  MemberResource.retrieveAll({limit: indexLimit}).$promise.then();
+         viewModel: ['$http', 'indexLimit', function ($http, indexLimit) {
+            return  $http.get('/members', { params: { limit: indexLimit }}).then();
         }],
-        config: ['indexLimit', 'Session', 'MemberResource', function (indexLimit, Session, MemberResource) {
+        config: ['indexLimit', 'Session', function (indexLimit, Session) {
             return {
                 name: 'Members',
-                resource: MemberResource.retrieveAll,
+                url: 'members',
                 create: Session.isAdmin(),
                 icon: 'users',
                 id: 'id',

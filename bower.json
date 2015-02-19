@@ -14,8 +14,12 @@
     "lodash": "~2.4.1",
     "angular-sanitize": "~1.2.22",
     "angular-bootstrap": "~0.11.0",
+<<<<<<< HEAD
     "angular-markdown-directive": "~0.3.0",
     "angular-resource": "~1.3.0",
     "angular-toastr": "https://github.com/cindoum/angular-toastr.git#master"
+=======
+    "angular-markdown-directive": "~0.3.0"
+>>>>>>> 0fc077928d51507c52734946e5892aeb62d9ac42
   }
 }
