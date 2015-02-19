@@ -1,4 +1,4 @@
-angular.module("starterApp", ['ngRoute', 'templates', 'ngSanitize', 'ui.bootstrap', 'btford.markdown', 'ngResource']);
+angular.module("starterApp", ['ngRoute', 'templates', 'ngSanitize', 'ui.bootstrap', 'btford.markdown', 'ngResource', 'toastr']);
 
 /*starterApp.config(['$locationProvider', function ($locationProvider) {
     $locationProvider.html5Mode(true);
@@ -26,7 +26,7 @@ angular.module("starterApp").config(['$routeProvider', '$httpProvider', '$inject
             var data = null;
             
             if (response.data.success != null) {
-               data = ResponseValidator.validate(response.data);
+               data = ResponseValidator.validate(response.data, response.status);
             } 
             
             return data || response;
@@ -36,7 +36,7 @@ angular.module("starterApp").config(['$routeProvider', '$httpProvider', '$inject
             var data = null;
             
             if (response.data.success != null) {
-               data = ResponseValidator.validate(response.data);
+               data = ResponseValidator.validate(response.data, response.status);
             }
             
             if (response.status === 401) {
