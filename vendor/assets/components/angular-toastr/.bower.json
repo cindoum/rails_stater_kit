@@ -1,0 +1,34 @@
+{
+  "name": "angular-toastr",
+  "main": [
+    "./dist/angular-toastr.js",
+    "./dist/angular-toastr.css"
+  ],
+  "ignore": [
+    "config",
+    "node_modules",
+    "playground",
+    "src",
+    "test",
+    ".travis.yml",
+    ".gitignore",
+    ".jshintrc",
+    "CHANGELOG.md",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "angular": "latest"
+  },
+  "homepage": "https://github.com/cindoum/angular-toastr",
+  "_release": "c4ba229478",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "c4ba22947806bc49deadf982c19f1d4f5906687f"
+  },
+  "_source": "https://github.com/cindoum/angular-toastr.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/cindoum/angular-toastr.git",
+  "_direct": true
+}
